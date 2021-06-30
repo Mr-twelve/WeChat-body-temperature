@@ -1,0 +1,55 @@
+<scroll-view class="container">
+  <view class="scrolltxt">
+    <view class="marquee_box">
+      <view class="marquee_text" style="transform: translateX(-{{marqueeDistance}}px)">
+        <text>{{text}}</text>
+        <text style="margin-right:{{marquee_margin}}px;"></text>
+        <text style="margin-right:{{marquee_margin}}px;">{{text}}</text>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd" style="font-weight:700">{{day}}异常学生名录({{people.length}}人)</view>
+    <view bindtap="getget" class="weui-cell__ft" style="font-size:13px;font-weight:700">获取表单下载</view>
+  </view>
+  <view bindtap="fuzhi" wx:if="{{fileUrl}}" class="weui-cell" style="font-size:13px;font-weight:700;color:blue">{{fileUrl}}</view>
+</view>
+
+<block wx:for="{{people}}">
+  <view class="weui-cell" style="background:LightBlue;margin:0rpx 25rpx 30rpx 25rpx;border-radius:10px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)">
+    <view class="weui-cell__bd" style="font-family:SimHei;font-size:32rpx;">
+      <!-- <view id="{{index}}" wx:if="{{day==time&&QX!=1&QX!=2}}" bindtap="removeYS">修正</view> -->
+      <view>姓名：{{item.name}}</view>
+      <view>班级：{{item.banji}}</view>
+      <view>学号：{{item.xuehao}}</view>
+      <view>宿舍：{{item.sheshe}}</view>
+      <view id="{{item.tell}}" style="color:blue" bindtap="cellto">手机号：{{item.tell}}</view>
+    </view>
+    <view class="bbb">
+      <view class="weui-cell__ft" style="color:red;font-weight:550">体温：{{item.endtiwen}}度</view>
+      <view class="but" style="margin-top:122rpx;background:white" id="{{index}}" wx:if="{{day==time&&qx!=1&&qx!=2&&qx!=9}}" bindtap="showDialogBtn">排除</view>
+    </view>
+  </view>
+
+</block>
+
+
+<!--弹窗-->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class="modal-title">确定排除{{name}}同学？</view>
+  <view class="modal-content">
+    <view class="modal-input">
+      <input name="xiuzhengtiwen" placeholder-class="input-holder" type="digit" maxlength="10" bindinput="inputChange" class="input" placeholder="请输入修正体温"></input>
+    </view>
+  </view>
+  <view class="modal-footer">
+    <button style="font-weight: 500;" class="btn-cancel" bindtap="hideModal" data-status="cancel">取消</button>
+    <button style="font-weight: 500;" class="btn-confirm" formType="submit" data-status="confirm">确定</button>
+  </view>
+  </form>
+</view>

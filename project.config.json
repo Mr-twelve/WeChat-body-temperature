@@ -1,0 +1,155 @@
+{
+	"miniprogramRoot": "miniprogram/",
+	"cloudfunctionRoot": "cloudfunctions/",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"enhance": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"nodeModules": true,
+		"autoAudits": false,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"useIsolateContext": true,
+		"useCompilerModule": true,
+		"userConfirmedUseCompilerModuleSwitch": false
+	},
+	"appid": "wxba72948642e2d37e",
+	"projectname": "%E6%8A%97%E7%96%AB%E6%83%85",
+	"libVersion": "2.10.4",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 0,
+			"list": [
+				{
+					"id": -1,
+					"name": "db guide",
+					"pathName": "pages/databaseGuide/databaseGuide",
+					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "登陆界面",
+					"pathName": "pages/login/login",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "校级--信息统计页面",
+					"pathName": "pages/detail/detail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "院级--信息统计页面",
+					"pathName": "pages/infoA/infoA",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "每日详情",
+					"pathName": "pages/infoB/infoB",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "普通学生界面",
+					"pathName": "pages/form/form",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "测试",
+					"pathName": "util/text/text",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "查看班级记录",
+					"pathName": "pages/infoC/infoC",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "注册信息首页",
+					"pathName": "pages/first/first",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 9,
+					"name": "pages/infoAX/infoAX",
+					"pathName": "pages/infoAX/infoAX",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/form/user-seting-mima/user-seting-mima",
+					"pathName": "pages/form/user-seting-mima/user-seting-mima",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/form/user-get/user-get",
+					"pathName": "pages/form/user-get/user-get",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "条款",
+					"pathName": "pages/tiaokuan/tiaokuan",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "班级返校",
+					"pathName": "pages/form/look-user-get/look-user-get",
+					"scene": null
+				}
+			]
+		}
+	}
+}

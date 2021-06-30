@@ -1,0 +1,42 @@
+/* miniprogram/pages/detail/detail.wxss */
+
+page {
+  background: white;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.scrolltxt {
+  padding: 0 20rpx;
+  background: #f8f8f8;
+}
+
+.marquee_box {
+  position: relative;
+  color: #333;
+  height: 90rpx;
+  display: block;
+  overflow: hidden;
+}
+
+.marquee_text {
+  white-space: nowrap;
+  position: absolute;
+  top: 0;
+  font-size: 14px;
+  height: 90rpx;
+  line-height: 90rpx;
+}
+.weui-cell-xueyuan {
+padding: 16px;
+position: relative;
+-webkit-box-align: center;
+-webkit-align-items: center;
+align-items: center;
+}

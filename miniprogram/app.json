@@ -1,0 +1,27 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/detail/detail",
+    "pages/infoA/infoA",
+    "pages/infoB/infoB",
+    "pages/form/form",
+    "pages/infoC/infoC",
+    "pages/first/first",
+    "pages/infoAX/infoAX",
+    "util/text/text",
+    "pages/form/user-seting-mima/user-seting-mima",
+    "pages/form/user-get/user-get",
+    "pages/form/look-user-get/look-user-get",
+    "pages/tiaokuan/tiaokuan",
+    "pages/form/pizhunuserifgoschool/pizhunuserifgoschool"
+  ],
+  "window": {
+    "backgroundColor": "#ffffff",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "温情农大",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

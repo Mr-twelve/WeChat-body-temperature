@@ -1,0 +1,11 @@
+page, .page {
+  height: 100%;
+}
+
+.logo{
+  width: 100%;
+  position: fixed;
+  bottom:0px;
+  display: flex;
+  justify-content: center;
+}

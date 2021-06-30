@@ -1,0 +1,16 @@
+<view style="margin-top: 20rpx;" class='baseInfo'>
+  <view>密码修改</view>
+</view>
+
+<form bindsubmit="formSubmit">
+  <view class='name'>
+    <view style="border-left: 10rpx solid LightBLue;">原密码:</view>
+    <input name="oldmima" type='text' placeholder-style='font-size:28rpx;' placeholder='请输入原密码'></input>
+  </view>
+  <view class='name'>
+    <view style="border-left: 10rpx solid LightBLue;">新密码:</view>
+     <input name="newmima" password='true' type="number" pattern="[0-9]*" placeholder="请输入新密码" />
+
+  </view>
+  <button form-type='submit'>提交</button>
+</form>

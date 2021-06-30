@@ -1,0 +1,363 @@
+/* miniprogram/pages/form/form.wxss */
+
+page {
+  margin-bottom:200rpx;
+  background: #f8f8f8;
+}
+
+/*button*/
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: greenyellow;
+  height: 80rpx;
+  margin: 15rpx 25rpx 0rpx 25rpx;
+  font-size: 34rpx;
+  border-radius: 4px;
+  font-family: Microsoft YaHei;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+/*mask*/
+
+.drawer_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+}
+
+/*content*/
+
+.drawer_box {
+  width: 650rpx;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  left: 0;
+  z-index: 1001;
+  background: #fafafa;
+  margin: -150px 50rpx 0 50rpx;
+  border-radius: 3px;
+}
+
+.drawer_title {
+  padding: 15px;
+  font: 20px "microsoft yahei";
+  text-align: center;
+}
+
+.drawer_content {
+  height: 74px;
+  overflow-y: scroll; /*超出父盒子高度可滚动*/
+}
+
+.btn_ok {
+  padding: 10px;
+  font: 20px "microsoft yahei";
+  text-align: center;
+  border-top: 1px solid #e8e8ea;
+  color: #3cc51f;
+}
+
+.top {
+  padding-top: 8px;
+}
+
+.bottom {
+  padding-bottom: 8px;
+}
+
+.title {
+  height: 30px;
+  line-height: 30px;
+  width: 160rpx;
+  text-align: center;
+  display: inline-block;
+  font: 300 28rpx/30px "microsoft yahei";
+}
+
+.input_base {
+  border: 2rpx solid #ccc;
+  padding-left: 10rpx;
+  margin-right: 50rpx;
+}
+
+.input_h30 {
+  height: 30px;
+  line-height: 30px;
+}
+
+.input_h60 {
+  height: 60px;
+}
+
+.input_view {
+  font: 15px "microsoft yahei";
+  background: #fff;
+  color: #000;
+  line-height: 30px;
+}
+
+input {
+  font: 12px "microsoft yahei";
+  background: #fff;
+  color: #000;
+}
+
+radio {
+  margin-right: 20px;
+}
+
+.grid {
+  display: -webkit-box;
+  display: box;
+}
+
+.col-0 {
+  -webkit-box-flex: 0;
+  box-flex: 0;
+}
+
+.col-1 {
+  -webkit-box-flex: 1;
+  box-flex: 1;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.pos {
+  display: flex;
+  flex-direction: row-reverse;
+  height: 50rpx;
+  margin-top: 20rpx;
+}
+
+.but {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  width: 107rpx;
+  height: 60rpx;
+  font-size: 29rpx;
+  border-radius: 4px;
+  font-family: NSimSun;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+.buta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* width: 107rpx; */
+  height: 60rpx;
+  font-size: 36rpx;
+  border-radius: 4px;
+  margin-right: 36rpx;
+  font-family: Microsoft YaHei;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.scrolltxt {
+  padding: 0 20rpx;
+  background: #f8f8f8;
+}
+
+.marquee_box {
+  position: relative;
+  color: #333;
+  height: 90rpx;
+  display: block;
+  overflow: hidden;
+}
+
+.marquee_text {
+  white-space: nowrap;
+  position: absolute;
+  top: 0;
+  font-size: 14px;
+  height: 90rpx;
+  line-height: 90rpx;
+}
+
+/* 遮罩 */
+
+.shade {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 10;
+}
+
+.shade_box {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  z-index: 11;
+  min-width: 200rpx;
+  min-height: 200rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+  color: #333;
+  font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: 0;
+  word-wrap: break-word;
+  animation-name: popup;
+  animation-duration: 0.2s;
+  animation-timing-function: linear;
+  animation-delay: 0;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+}
+
+@keyframes popup {
+  from {
+    opacity: 0;
+    transform: scale(0.3, 0.3);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}
+
+/* 当前弹窗样式 */
+
+.popup {
+  width: 600rpx;
+  height: 700rpx;
+  background-color: Honeydew;
+}
+
+.popup .title {
+  padding: 0 20rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 32rpx;
+  background-color: LightGreen;
+  z-index: 2;
+}
+
+.popup .content {
+  z-index: 2;
+  margin: 70rpx;
+  font-size: 36rpx;
+  /* text-align: center; */
+  color: black;
+  background-repeat:no-repeat; 
+ background-size:100% 100%;
+ -moz-background-size:100% 100%;
+/*  background-image: url(../../images/院徽.jpg); */
+}
+
+.popup .copy {
+  z-index: 2;
+  color: #999;
+  text-align: center;
+  font-size: 28rpx;
+}
+
+.popup .msg {
+  color: #f00;
+  text-align: center;
+  margin-top: 30rpx;
+}
+
+.weather-wrapper {
+  background-image: url(../images/xiaohui.png);
+  padding-top: 174rpx;
+  padding-bottom: 250rpx;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.ind{
+  z-index: -1;
+}
+
+.userinfor{
+align-items: center;
+justify-content: center;
+background: LightBLue;
+margin: 15rpx 25rpx 0rpx 25rpx;
+border-radius: 4px;
+font-family: Microsoft YaHei;
+box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
+}
+.user-item{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 45rpx;
+}
+
+.user-tiwen{
+  height: 85rpx;
+  display: flex;
+  align-items: center;
+  font-size: 40rpx;
+  border-bottom: 2rpx solid #ccc;
+}
+
+
+
+.tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100rpx;
+  background: white;
+  display: flex;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.tab-bar-border {
+  background-color: rgba(0, 0, 0, 0.33);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 1px;
+  transform: scaleY(0.5);
+}
+
+.tab-bar-item {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+

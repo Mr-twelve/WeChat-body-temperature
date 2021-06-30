@@ -1,0 +1,95 @@
+<wxs module="toxueyuan" src="../../util/noupstudent.wxs" />
+<!-- <scroll-view class="container">
+  <view class="scrolltxt">
+    <view class="marquee_box">
+      <view class="marquee_text" style="transform: translateX(-{{marqueeDistance}}px)">
+        <text>{{text}}</text>
+        <text style="margin-right:{{marquee_margin}}px;"></text>
+        <text style="margin-right:{{marquee_margin}}px;">{{text}}</text>
+      </view>
+    </view>
+  </view>
+</scroll-view> -->
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd" style="font-weight:700">{{student.title}}{{student.people.length}}/{{people.length}}人填报</view>
+    <!-- <view class="weui-cell__ft" style="font-size:13px;font-weight:700">表单下载链接</view> -->
+  </view>
+</view>
+
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd" style="font-weight:700">未上报体温同学</view>
+  </view>
+</view>
+<block wx:for="{{people}}" wx:key='people'>
+<block wx:if="{{student.xueyuan=='rjxy'}}">
+<view id="{{index}}" bindtap="upthistiwen" wx:if="{{!(toxueyuan.toname(item.xuehao,student.people))}}" class="weui-cell" style="background:LightBlue;margin:0rpx 25rpx 30rpx 25rpx;border-radius:10px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)">
+  <view class="weui-cell__bd" style="font-family:SimHei;font-size:32rpx;">
+    <view>姓名：{{item.name}}</view>
+    <view>学号：{{item.xuehao}}</view>
+  </view>
+</view>
+</block>
+<block wx:else>
+<view id="{{index}}" wx:if="{{!(toxueyuan.toname(item.xuehao,student.people))}}" class="weui-cell" style="background:LightBlue;margin:0rpx 25rpx 30rpx 25rpx;border-radius:10px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)">
+  <view class="weui-cell__bd" style="font-family:SimHei;font-size:32rpx;">
+    <view>姓名：{{item.name}}</view>
+    <view>学号：{{item.xuehao}}</view>
+  </view>
+</view>
+</block>
+</block>
+
+
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd" style="font-weight:700">已上报体温同学</view>
+  </view>
+</view>
+
+<block wx:for="{{student.people}}" wx:key='people'>
+<view class="weui-cell" style="background:LightBlue;margin:0rpx 25rpx 30rpx 25rpx;border-radius:10px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)">
+  <view class="weui-cell__bd" style="font-family:SimHei;font-size:32rpx;">
+    <view>姓名：{{item.name}}</view>
+    <view>学号：{{item.xuehao}}</view>
+    <view>宿舍：{{item.sheshe}}</view>
+    <view>手机号：{{item.tell}}</view>
+  </view>
+  <view class="weui-cell__ft" style="color:{{(item.uptiwen>37.3)?'red':'green'}};font-weight:550">体温：{{item.uptiwen}}度</view>
+</view>
+</block>
+
+
+
+<!-- <view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__bd" style="font-weight:700">未上报体温学生({{people.length}}人)</view>
+    <view class="weui-cell__ft" style="font-size:13px;font-weight:700">表单下载链接</view> 
+  </view>
+</view>
+<view class="weui-cell" style="background:LightBlue;margin:0rpx 25rpx 30rpx 25rpx;border-radius:10px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)">
+  <view class="weui-cell__bd" style="font-family:SimHei;font-size:32rpx;">
+    <view>姓名：蔡吉</view>
+    <view>学号：20181611401</view>
+    <view>宿舍：19-651-1</view>
+    <view>手机号：16634254305</view>
+  </view>
+</view> -->
+
+<!--弹窗-->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class="modal-title">确定填报{{name}}同学？</view>
+  <view class="modal-content">
+    <view class="modal-input">
+      <input name="xiuzhengtiwen" placeholder-class="input-holder" type="digit" maxlength="10" bindinput="inputChange" class="input" placeholder="请输入体温"></input>
+    </view>
+  </view>
+  <view class="modal-footer">
+    <button style="font-weight: 500;" class="btn-cancel" bindtap="hideModal" data-status="cancel">取消</button>
+    <button style="font-weight: 500;" class="btn-confirm" formType="submit" data-status="confirm">确定</button>
+  </view>
+  </form>
+</view>

@@ -1,0 +1,243 @@
+<scroll-view class="container">
+  <view class="scrolltxt">
+    <view class="marquee_box">
+      <view class="marquee_text" style="transform: translateX(-{{marqueeDistance}}px)">
+        <text style="font-size:30rpx;">{{text}}</text>
+        <text style="margin-right:{{marquee_margin}}px;font-size:30rpx;"></text>
+        <text style="margin-right:{{marquee_margin}}px;font-size:30rpx;">{{text}}</text>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-panel">
+      <view style="font-weight:550;text-align:center">今日异常人数{{todaypeople}}人(更新时间{{total.time}})</view>
+      <view style="font-weight:550;text-align:center;font-family:SimHei">
+        今日已填报人数：上午{{tapeople}}人，下午{{tbpeople}}人
+      </view>
+    </view>
+    <view class="weui-panel ">
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+          <view class="weui-cell__bd" style="font-weight:700">各学院今日异常人数</view>
+          <view bindtap="getget" class="weui-cell__ft" style="font-size:13px;font-weight:700">获取表单下载</view>
+        </view>
+        <view bindtap="fuzhi" wx:if="{{fileUrl}}" class="weui-cell " style="font-size:13px;font-weight:700;color:blue">{{fileUrl}}</view>
+      </view>
+      <!--  -->
+      <view id="nxy" bindtap="golook" class="weui-cell-xueyuan" style="background:LightBlue;margin:0rpx 25rpx 30rpx 25rpx;border-radius:10px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)">
+        <view style="display: -webkit-box;">
+          <view class="weui-cell__bd" style="font-family:SimHei;font-size:32rpx;">
+            <view>农学院异常人数</view>
+          </view>
+          <view class="weui-cell__ft" style="color:red;font-weight:550">{{total.nxy}}人</view>
+        </view>
+        <view>已填报：上午{{nxytapeople}}人，下午{{nxytbpeople}}人</view>
+        <view>未填报：上午{{nxynotapeople}}人，下午{{nxynotbpeople}}人</view>
+      </view>
+      <view id="dwkjxy" bindtap="golook" class="weui-cell-xueyuan" style="background:LightBlue;margin:0rpx 25rpx 30rpx 25rpx;border-radius:10px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)">
+        <view style="display: -webkit-box;">
+          <view class="weui-cell__bd" style="font-family:SimHei;font-size:32rpx;">
+            <view>动物科技学院异常人数</view>
+          </view>
+          <view class="weui-cell__ft" style="color:red;font-weight:550">{{total.dwkjxy}}人</view>
+        </view>
+        <view>已填报：上午{{dwkjxytapeople}}人，下午{{dwkjxytbpeople}}人</view>
+        <view>未填报：上午{{dwkjxynotapeople}}人，下午{{dwkjxynotbpeople}}人</view>
+      </view>
+      <view id="lxy" bindtap="golook" class="weui-cell-xueyuan" style="background:LightBlue;margin:0rpx 25rpx 30rpx 25rpx;border-radius:10px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)">
+        <view style="display: -webkit-box;">
+          <view class="weui-cell__bd" style="font-family:SimHei;font-size:32rpx;">
+            <view>林学院异常人数</view>
+          </view>
+          <view class="weui-cell__ft" style="color:red;font-weight:550">{{total.lxy}}人</view>
+        </view>
+        <view>已填报：上午{{lxytapeople}}人，下午{{lxytbpeople}}人</view>
+        <view>未填报：上午{{lxynotapeople}}人，下午{{lxynotbpeople}}人</view>
+      </view>
+      <view id="yyxy" bindtap="golook" class="weui-cell-xueyuan" style="background:LightBlue;margin:0rpx 25rpx 30rpx 25rpx;border-radius:10px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)">
+        <view style="display: -webkit-box;">
+          <view class="weui-cell__bd" style="font-family:SimHei;font-size:32rpx;">
+            <view>园艺学院异常人数</view>
+          </view>
+          <view class="weui-cell__ft" style="color:red;font-weight:550">{{total.yyxy}}人</view>
+        </view>
+        <view>已填报：上午{{yyxytapeople}}人，下午{{yyxytbpeople}}人</view>
+        <view>未填报：上午{{yyxynotapeople}}人，下午{{yyxynotbpeople}}人</view>
+      </view>
+      <view id="zyhjxy" bindtap="golook" class="weui-cell-xueyuan" style="background:LightBlue;margin:0rpx 25rpx 30rpx 25rpx;border-radius:10px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)">
+        <view style="display: -webkit-box;">
+          <view class="weui-cell__bd" style="font-family:SimHei;font-size:32rpx;">
+            <view>资源环境学院异常人数</view>
+          </view>
+          <view class="weui-cell__ft" style="color:red;font-weight:550">{{total.zyhjxy}}人</view>
+        </view>
+        <view>已填报：上午{{zyhjxytapeople}}人，下午{{zyhjxytbpeople}}人</view>
+        <view>未填报：上午{{zyhjxynotapeople}}人，下午{{zyhjxynotbpeople}}人</view>
+      </view>
+      <view id="gxy" bindtap="golook" class="weui-cell-xueyuan" style="background:LightBlue;margin:0rpx 25rpx 30rpx 25rpx;border-radius:10px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)">
+        <view style="display: -webkit-box;">
+          <view class="weui-cell__bd" style="font-family:SimHei;font-size:32rpx;">
+            <view>工学院异常人数</view>
+          </view>
+          <view class="weui-cell__ft" style="color:red;font-weight:550">{{total.gxy}}人</view>
+        </view>
+        <view>已填报：上午{{gxytapeople}}人，下午{{gxytbpeople}}人</view>
+        <view>未填报：上午{{gxynotapeople}}人，下午{{gxynotbpeople}}人</view>
+      </view>
+      <view id="jjglxy" bindtap="golook" class="weui-cell-xueyuan" style="background:LightBlue;margin:0rpx 25rpx 30rpx 25rpx;border-radius:10px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)">
+        <view style="display: -webkit-box;">
+          <view class="weui-cell__bd" style="font-family:SimHei;font-size:32rpx;">
+            <view>经济管理学院异常人数</view>
+          </view>
+          <view class="weui-cell__ft" style="color:red;font-weight:550">{{total.jjglxy}}人</view>
+        </view>
+        <view>已填报：上午{{jjglxytapeople}}人，下午{{jjglxytbpeople}}人</view>
+        <view>未填报：上午{{jjglxynotapeople}}人，下午{{jjglxynotbpeople}}人</view>
+      </view>
+      <view id="spkxygcxy" bindtap="golook" class="weui-cell-xueyuan" style="background:LightBlue;margin:0rpx 25rpx 30rpx 25rpx;border-radius:10px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)">
+        <view style="display: -webkit-box;">
+          <view class="weui-cell__bd" style="font-family:SimHei;font-size:32rpx;">
+            <view>食品科学与工程学院异常人数</view>
+          </view>
+          <view class="weui-cell__ft" style="color:red;font-weight:550">{{total.spkxygcxy}}人</view>
+        </view>
+        <view>已填报：上午{{spkxygcxytapeople}}人，下午{{spkxygcxytbpeople}}人</view>
+        <view>未填报：上午{{spkxygcxynotapeople}}人，下午{{spkxygcxynotbpeople}}人</view>
+      </view>
+      <view id="wlxy" bindtap="golook" class="weui-cell-xueyuan" style="background:LightBlue;margin:0rpx 25rpx 30rpx 25rpx;border-radius:10px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)">
+        <view style="display: -webkit-box;">
+          <view class="weui-cell__bd" style="font-family:SimHei;font-size:32rpx;">
+            <view>基础部异常人数</view>
+          </view>
+          <view class="weui-cell__ft" style="color:red;font-weight:550">{{total.wlxy}}人</view>
+        </view>
+        <view>已填报：上午{{wlxytapeople}}人，下午{{wlxytbpeople}}人</view>
+        <view>未填报：上午{{wlxynotapeople}}人，下午{{wlxynotbpeople}}人</view>
+      </view>
+      <view id="smkxxy" bindtap="golook" class="weui-cell-xueyuan" style="background:LightBlue;margin:0rpx 25rpx 30rpx 25rpx;border-radius:10px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)">
+        <view style="display: -webkit-box;">
+          <view class="weui-cell__bd" style="font-family:SimHei;font-size:32rpx;">
+            <view>生命科学学院异常人数</view>
+          </view>
+          <view class="weui-cell__ft" style="color:red;font-weight:550">{{total.smkxxy}}人</view>
+        </view>
+        <view>已填报：上午{{smkxxytapeople}}人，下午{{smkxxytbpeople}}人</view>
+        <view>未填报：上午{{smkxxynotapeople}}人，下午{{smkxxynotbpeople}}人</view>
+      </view>
+      <view id="ggglxy" bindtap="golook" class="weui-cell-xueyuan" style="background:LightBlue;margin:0rpx 25rpx 30rpx 25rpx;border-radius:10px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)">
+        <view style="display: -webkit-box;">
+          <view class="weui-cell__bd" style="font-family:SimHei;font-size:32rpx;">
+            <view>公共管理学院异常人数</view>
+          </view>
+          <view class="weui-cell__ft" style="color:red;font-weight:550">{{total.ggglxy}}人</view>
+        </view>
+        <view>已填报：上午{{ggglxytapeople}}人，下午{{ggglxytbpeople}}人</view>
+        <view>未填报：上午{{ggglxynotapeople}}人，下午{{ggglxynotbpeople}}人</view>
+      </view>
+      <!-- <view id="mapjyzx" bindtap="golook" class="weui-cell-xueyuan" style="background:LightBlue;margin:0rpx 25rpx 30rpx 25rpx;border-radius:10px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)">
+        <view style="display: -webkit-box;">
+          <view class="weui-cell__bd" style="font-family:SimHei;font-size:32rpx;">
+            <view>MPA教育中心异常人数</view>
+          </view>
+          <view class="weui-cell__ft" style="color:red;font-weight:550">{{total.mapjyzx}}人</view>
+        </view>
+        <view>已填报：上午{{nxytapeople}}人，下午{{nxytbpeople}}人</view>
+        <view>未填报：上午{{nxynotapeople}}人，下午{{nxynotbpeople}}人</view>
+      </view> -->
+      <view id="xxkxygcxy" bindtap="golook" class="weui-cell-xueyuan" style="background:LightBlue;margin:0rpx 25rpx 30rpx 25rpx;border-radius:10px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)">
+        <view style="display: -webkit-box;">
+          <view class="weui-cell__bd" style="font-family:SimHei;font-size:32rpx;">
+            <view>信息科学与工程学院异常人数</view>
+          </view>
+          <view class="weui-cell__ft" style="color:red;font-weight:550">{{total.xxkxygcxy}}人</view>
+        </view>
+        <view>已填报：上午{{xxkxygcxytapeople}}人，下午{{xxkxygcxytbpeople}}人</view>
+        <view>未填报：上午{{xxkxygcxynotapeople}}人，下午{{xxkxygcxynotbpeople}}人</view>
+      </view>
+      <view id="rjxy" bindtap="golook" class="weui-cell-xueyuan" style="background:LightBlue;margin:0rpx 25rpx 30rpx 25rpx;border-radius:10px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)">
+        <view style="display: -webkit-box;">
+          <view class="weui-cell__bd" style="font-family:SimHei;font-size:32rpx;">
+            <view>软件学院异常人数</view>
+          </view>
+          <view class="weui-cell__ft" style="color:red;font-weight:550">{{total.rjxy}}人</view>
+        </view>
+        <view>已填报：上午{{rjxytapeople}}人，下午{{rjxytbpeople}}人</view>
+        <view>未填报：上午{{rjxynotapeople}}人，下午{{rjxynotbpeople}}人</view>
+      </view>
+      <view id="cxjsxy" bindtap="golook" class="weui-cell-xueyuan" style="background:LightBlue;margin:0rpx 25rpx 30rpx 25rpx;border-radius:10px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)">
+        <view style="display: -webkit-box;">
+          <view class="weui-cell__bd" style="font-family:SimHei;font-size:32rpx;">
+            <view>城乡建设学院异常人数</view>
+          </view>
+          <view class="weui-cell__ft" style="color:red;font-weight:550">{{total.cxjsxy}}人</view>
+        </view>
+        <view>已填报：上午{{cxjsxytapeople}}人，下午{{cxjsxytbpeople}}人</view>
+        <view>未填报：上午{{cxjsxynotapeople}}人，下午{{cxjsxynotbpeople}}人</view>
+      </view>
+      <view id="tyxy" bindtap="golook" class="weui-cell-xueyuan" style="background:LightBlue;margin:0rpx 25rpx 30rpx 25rpx;border-radius:10px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)">
+        <view style="display: -webkit-box;">
+          <view class="weui-cell__bd" style="font-family:SimHei;font-size:32rpx;">
+            <view>体育部异常人数</view>
+          </view>
+          <view class="weui-cell__ft" style="color:red;font-weight:550">{{total.tyxy}}人</view>
+        </view>
+        <view>已填报：上午{{tyxytapeople}}人，下午{{tyxytbpeople}}人</view>
+        <view>未填报：上午{{tyxynotapeople}}人，下午{{tyxynotbpeople}}人</view>
+      </view>
+      <view id="mkszyxy" bindtap="golook" class="weui-cell-xueyuan" style="background:LightBlue;margin:0rpx 25rpx 30rpx 25rpx;border-radius:10px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)">
+        <view style="display: -webkit-box;">
+          <view class="weui-cell__bd" style="font-family:SimHei;font-size:32rpx;">
+            <view>马克思主义学院异常人数</view>
+          </view>
+          <view class="weui-cell__ft" style="color:red;font-weight:550">{{total.mkszyxy}}人</view>
+        </view>
+        <view>已填报：上午{{mkszyxytapeople}}人，下午{{mkszyxytbpeople}}人</view>
+        <view>未填报：上午{{mkszyxynotapeople}}人，下午{{mkszyxynotbpeople}}人</view>
+      </view> 
+      <view id="zbxy" bindtap="golook" class="weui-cell-xueyuan" style="background:LightBlue;margin:0rpx 25rpx 30rpx 25rpx;border-radius:10px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)">
+        <view style="display: -webkit-box;">
+          <view class="weui-cell__bd" style="font-family:SimHei;font-size:32rpx;">
+            <view>植保学院异常人数</view>
+          </view>
+          <view class="weui-cell__ft" style="color:red;font-weight:550">{{total.zbxy}}人</view>
+        </view>
+        <view>已填报：上午{{zbxytapeople}}人，下午{{zbxytbpeople}}人</view>
+        <view>未填报：上午{{zbxynotapeople}}人，下午{{zbxynotbpeople}}人</view>
+      </view>
+      <view id="dwyxy" bindtap="golook" class="weui-cell-xueyuan" style="background:LightBlue;margin:0rpx 25rpx 30rpx 25rpx;border-radius:10px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)">
+        <view style="display: -webkit-box;">
+          <view class="weui-cell__bd" style="font-family:SimHei;font-size:32rpx;">
+            <view>动物医学院异常人数</view>
+          </view>
+          <view class="weui-cell__ft" style="color:red;font-weight:550">{{total.dwyxy}}人</view>
+        </view>
+        <view>已填报：上午{{dwyxytapeople}}人，下午{{dwyxytbpeople}}人</view>
+        <view>未填报：上午{{dwyxynotapeople}}人，下午{{dwyxynotbpeople}}人</view>
+      </view>
+      <view id="cykxy" bindtap="golook" class="weui-cell-xueyuan" style="background:LightBlue;margin:0rpx 25rpx 30rpx 25rpx;border-radius:10px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)">
+        <view style="display: -webkit-box;">
+          <view class="weui-cell__bd" style="font-family:SimHei;font-size:32rpx;">
+            <view>草业科学院异常人数</view>
+          </view>
+          <view class="weui-cell__ft" style="color:red;font-weight:550">{{total.cykxy}}人</view>
+        </view>
+        <view>已填报：上午{{cykxytapeople}}人，下午{{cykxytbpeople}}人</view>
+        <view>未填报：上午{{cykxynotapeople}}人，下午{{cykxynotbpeople}}人</view>
+      </view>
+      <!-- <view id="sxzzlljxyjb" bindtap="golook" class="weui-cell-xueyuan" style="background:LightBlue;margin:0rpx 25rpx 30rpx 25rpx;border-radius:10px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)">
+        <view style="display: -webkit-box;">
+          <view class="weui-cell__bd" style="font-family:SimHei;font-size:32rpx;">
+            <view>思想政治理论教学研究部异常人数</view>
+          </view>
+          <view class="weui-cell__ft" style="color:red;font-weight:550">{{total.sxzzlljxyjb}}人</view>
+        </view>
+        <view>已填报：上午{{nxytapeople}}人，下午{{nxytbpeople}}人</view>
+        <view>未填报：上午{{nxynotapeople}}人，下午{{nxynotbpeople}}人</view>
+      </view> -->
+
+      <!-- //////////////////////////////// -->
+    </view>
+  </view>
+</view>

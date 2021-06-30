@@ -1,0 +1,27 @@
+<button bindtap="chaxunrs">查询各院人数</button>
+<view>-------------</view>
+<view wx:for="{{havepeople}}">
+<view>{{item._id}}:{{item.num}}</view>
+</view>
+<view>-------------</view>
+
+<form bindsubmit="formSubmit" bindreset="formReset">
+<input name="inputxueyuan" placeholder="输入学院英文代码" />
+<button formType="submit">导出该院已填报</button>
+</form>
+
+<view bindtap="fuzhi">{{fileUrl}}</view>
+
+
+<form bindsubmit="formSubmittongguo" bindreset="formReset">
+<input name="inputxueyuan" placeholder="输入学院英文代码" />
+<button formType="submit">导出该院已通过</button>
+</form>
+
+<view bindtap="fuzhi2">{{fileUrl2}}</view>
+
+<button bindtap="gengaibanji">班级更改</button>
+<button bindtap="jiaoyan">班级jiaoyan</button>
+
+<button bindtap="removeyunhanshu">REMOVE云函数调用</button>
+

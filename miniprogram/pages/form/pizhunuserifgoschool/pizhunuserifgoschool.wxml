@@ -1,0 +1,30 @@
+<view class="weui-cells weui-cells_after-title">
+	<view class="weui-cell">
+		<view class="weui-cell__bd" style="font-weight:700">{{xueyuanC+banji}}</view>
+		<view bindtap="savaExcel" class="weui-cell__ft" style="font-size:13px;font-weight:700">表单下载链接</view>
+	</view>
+	<view class="weui-cell">
+		<view bindtap="fuzhi" wx:if="{{fileUrl}}" class="weui-cell__bd">{{fileUrl}}</view>
+	</view>
+</view>
+
+<block wx:for="{{getstudent}}" wx:key='people'>
+	<view id="{{index}}" bindtap="lookthis" class="weui-cell" style="background:LightBlue;margin:0rpx 25rpx 30rpx 25rpx;border-radius:10px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)">
+		<view class="weui-cell__bd" style="font-family:SimHei;font-size:32rpx;">
+			<view>姓名：{{item.name}}</view>
+			<view>学号：{{item.xuehao}}</view>
+			<block wx:if="{{lookindex==index}}">
+				<view>*现居住地址:</view>
+				<view>{{item.location}}</view>
+				<view>*本人身体健康情况:</view>
+				<view>{{item.myhealth}}</view>
+				<view>*同住家庭人员健康状况:</view>
+				<view>{{item.familyhealth}}</view>
+				<view>*从现居住地返校:</view>
+				<view>{{item.goschool}}</view>
+			</block>
+		</view>
+		<view class="weui-cell__ft" wx:if="{{item.location.length>0&&item.myhealth.length>0&&item.familyhealth.length>0&&item.goschool.length>0}}" style="color:green;font-weight:550">已填报</view>
+		<view class="weui-cell__ft" wx:else style="color:red;font-weight:550">未填报</view>
+	</view>
+</block>

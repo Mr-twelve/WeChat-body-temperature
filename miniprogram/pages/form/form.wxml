@@ -1,0 +1,191 @@
+<wxs module="dinwei" src="../../util/dinwei.wxs" />
+<wxs module="gettiwen" src="../../util/tiwen.wxs" />
+
+<block wx:if="{{tabbarindex}}">
+  <!-- 班团发起体温的按钮,只有班团可见，删除按钮只有班团可见 -->
+  <view wx:if="{{student.QX==9}}" class="btn" bindtap="goto" style="background:SkyBlue">发起体温统计</view>
+
+  <block wx:for="{{tiwen}}" wx:key="tiwen">
+
+    <!-- 已经报名蓝色 -->
+    <view wx:if='{{dinwei.toname(myxuehao,item.people)}}' class="weui-panel weui-panel_access" style="background:LightBLue;margin:20rpx 25rpx 25rpx 25rpx;border-radius:5px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)" data-statu="open">
+      <!-- <view class="weui-panel__hd">文字组合列表</view> -->
+      <view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_text">
+          <view class="pos" style="flex-direction:initial;">
+            <view id="{{index}}" class="buta" style="display: flex;font-size:36rpx;width:90%;font-family: Microsoft YaHei;justify-content: flex-start;">{{item.title}}</view>
+            <view style="display: flex; align-items:flex-end;">
+              <view style="font-size:36rpx;font-width:900;" wx:if="{{student.QX==9}}" id="{{index}}" bindtap="remove">X</view>
+            </view>
+          </view>
+          <view class="weui-media-box__desc" style="font-size:28rpx;">填报截止{{item.endtime}}</view>
+          <view class="weui-media-box__desc" style="font-size:28rpx;">请认真上传个人的体温信息，你的认真就是为疫情工作奉献自己的力量,点击彩色区域上传当前体温。</view>
+          <view class="pos">
+            <!-- 班团查看本班记录 -->
+            <view wx:if="{{student.QX==9}}" class="but" id="{{item._id}}" bindtap="myclass">记录</view>
+            <view id="{{index}}" bindtap="settiwen" class="buta" style="font-size:32rpx;">上传体温为:{{gettiwen.toname(myxuehao,item.people)}}度</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+
+    <!-- 时间内未报名黄色 -->
+    <view id="{{index}}" bindtap="powerDrawer" wx:if='{{!dinwei.toname(myxuehao,item.people)&&time<item.endtime}}' class="weui-panel weui-panel_access" style="background:LightYellow;margin:20rpx 25rpx 25rpx 25rpx;border-radius:5px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)"
+      data-statu="open">
+      <!-- <view class="weui-panel__hd">文字组合列表</view> -->
+      <view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_text">
+          <view class="pos" style="flex-direction:initial;">
+            <view id="{{index}}" class="buta" style="display: flex;font-size:36rpx;width:90%;font-family: Microsoft YaHei;justify-content: flex-start;">{{item.title}}</view>
+            <view style="display: flex; align-items:flex-end;">
+              <view style="font-size:36rpx;font-width:900;" wx:if="{{student.QX==9}}" id="{{index}}" bindtap="remove">X</view>
+            </view>
+          </view>
+          <view id="{{index}}" class="weui-media-box__desc" style="font-size:28rpx;">填报截止{{item.endtime}}</view>
+          <view id="{{index}}" class="weui-media-box__desc" style="font-size:28rpx;">请认真上传个人的体温信息，你的认真就是为疫情工作奉献自己的力量,点击彩色区域上传当前体温。</view>
+          <view class="pos">
+
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 时间结束未报名红色 -->
+    <view wx:if='{{!dinwei.toname(myxuehao,item.people)&&time>item.endtime}}' class="weui-panel weui-panel_access" style="background:LightCoral;margin:20rpx 25rpx 25rpx 25rpx;border-radius:5px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)" data-statu="open">
+      <!-- <view class="weui-panel__hd">文字组合列表</view> -->
+      <view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_text">
+          <view class="pos" style="flex-direction:initial;">
+            <view id="{{index}}" class="buta" style="display: flex;font-size:36rpx;width:90%;font-family: Microsoft YaHei;justify-content: flex-start;">{{item.title}}</view>
+            <view style="display: flex; align-items:flex-end;">
+              <view style="font-size:36rpx;font-width:900;" wx:if="{{student.QX==9}}" id="{{index}}" bindtap="remove">X</view>
+            </view>
+          </view>
+          <view class="weui-media-box__desc" style="font-size:28rpx;">填报截止{{item.endtime}}</view>
+          <view class="weui-media-box__desc" style="font-size:28rpx;">请认真上传个人的体温信息，你的认真就是为疫情工作奉献自己的力量,点击彩色区域上传当前体温。</view>
+          <view class="pos">
+            <view wx:if="{{student.QX==9}}" class="but" id="{{item._id}}" bindtap="myclass">记录</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <view style="display: flex;width:100%;align-items: center;justify-content: center;">--仅显示最近20条记录--</view>
+
+  <!-- 弹窗部分 -->
+  <view class="drawer_screen" bindtap="closeDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>
+  <view class="drawer_box" wx:if="{{showModalStatus}}">
+    <view class="drawer_title" style="font-family:SimHei"></view>
+    <form bindsubmit="formSubmit" bindreset="formReset">
+      <view class="drawer_content">
+        <view class="top grid">
+          <label class="title col-0" style="font-size:18px;font-weight:400;">体温</label>
+          <input name="uptiwen" class="input_base input_h30 col-1" type="digit" value=""></input>
+        </view>
+        <view class="top grid" style="display: block;text-align: center;font-size: 28rpx;">注：大于37.3摄氏度为异常体温</view>
+      </view>
+      <button class="btn_ok" formType="submit" data-statu="close" style="font-size:18px;">确定</button>
+    </form>
+  </view>
+</block>
+<view class='shade' hidden='{{popup}}' bindtap='hidePopup'></view>
+<view class='shade_box popup' hidden='{{popup}}' style="background:;border-radius:40rpx;box-shadow:5px 6px 5px 6px rgba(0,0,0,0.5);">
+
+  <view class='title'>
+    <text>返校批准卡</text>
+  </view>
+  <view class='content'>
+    <view wx:if="{{student.tongxin=='1'}}" style="margin-top:20rpx;font-weight:600;margin-bottom:30rpx;">审核：已通过</view>
+    <view wx:if="{{student.tongxin=='0'}}" style="margin-top:20rpx;font-weight:600;margin-bottom:30rpx;">审核：审核中</view>
+    <view wx:if="{{student.tongxin=='2'}}" style="margin-top:20rpx;font-weight:600;margin-bottom:30rpx;">审核：
+      <text style="color:red;">未通过</text>
+    </view>
+    <view>姓名：{{student.name}}</view>
+    <view>学院：{{student.xueyuanC}}</view>
+    <view>班级：{{student.banji}}</view>
+    <view>学号：{{student.xuehao}}</view>
+    <view>联系方式：{{student.tell}}</view>
+
+  </view>
+  <view class='copy' style="font-size:30rpx;">仅限本人使用</view>
+</view>
+
+<block wx:if="{{!tabbarindex}}">
+  <view style="height:100%">
+    <view class="userinfor" style="padding-top: 30rpx;">
+      <view bindtap='showPopup' class="user-item">{{student.xueyuanC}}</view>
+      <view bindtap='showPopup' class="user-item">{{student.name}}</view>
+      <view bindtap='showPopup' class="user-item" style="height: 40rpx;margin-top: 13rpx;">{{student.xuehao}}</view>
+      <view bindtap="setting" class="user-item" style=" display: flex;justify-content: flex-end;margin-right:20rpx;height: 46rpx;align-items: flex-end">
+        <mp-icon type="field" icon="setting" size="{{20}}"></mp-icon>
+      </view>
+    </view>
+    <view wx:if="{{usersetting}}" class="userinfor" style="margin: 8rpx 50rpx;">
+      <view bindtap="setusermima" style="padding:0 30rpx">
+        <view class="user-tiwen" style="border-bottom: 0rpx solid #ccc;">
+          <view style="width: 70%;display: flex;justify-content: flex-start;height: 46rpx;align-items: center">密码修改</view>
+          <view style="width: 30%;display: flex;justify-content: flex-end;height: 46rpx;align-items: center">
+            <mp-icon type="field" icon="arrow" size="{{13}}"></mp-icon>
+          </view>
+        </view>
+      </view>
+      <view bindtap="userifgoschool" style="padding:0 30rpx">
+        <view class="user-tiwen" style="border-bottom: 0rpx solid #ccc;">
+          <view style="width: 70%;display: flex;justify-content: flex-start;height: 46rpx;align-items: center">返校申请卡</view>
+          <view style="width: 30%;display: flex;justify-content: flex-end;height: 46rpx;align-items: center">
+            <mp-icon type="field" icon="arrow" size="{{13}}"></mp-icon>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{student.QX==9}}" bindtap="lookuserifgoschool" style="padding:0 30rpx">
+        <view class="user-tiwen" style="border-bottom: 0rpx solid #ccc;">
+          <view style="width: 70%;display: flex;justify-content: flex-start;height: 46rpx;align-items: center">班级返校申请卡查看</view>
+          <view style="width: 30%;display: flex;justify-content: flex-end;height: 46rpx;align-items: center">
+            <mp-icon type="field" icon="arrow" size="{{13}}"></mp-icon>
+          </view>
+        </view>
+      </view>
+      <!-- <view wx:if="{{student.QX==9}}" bindtap="pizhunuserifgoschool" style="padding:0 30rpx">
+        <view class="user-tiwen" style="border-bottom: 0rpx solid #ccc;">
+          <view style="width: 70%;display: flex;justify-content: flex-start;height: 46rpx;align-items: center">班级返校管理</view>
+          <view style="width: 30%;display: flex;justify-content: flex-end;height: 46rpx;align-items: center">
+            <mp-icon type="field" icon="arrow" size="{{13}}"></mp-icon>
+          </view>
+        </view>
+      </view> -->
+    </view>
+
+    <view style="height:50rpx"> </view>
+
+    <view class="userinfor" style="background:LightYellow">
+      <view style="padding:0 30rpx">
+        <view wx:for="{{tiwenday}}" class="user-tiwen">
+          <view style="width: 70%;justify-content: center;display: flex;">{{item.a}}</view>
+          <view>{{item.b}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="weui-form__extra-area logo" style="position:fixed; bottom: 60rpx;width:100%">
+      <view class="weui-footer">
+        <view class="weui-footer__links">
+          <view class="weui-footer__link">软件学院</view>
+        </view>
+        <view class="weui-footer__text">Copyright © 2019-2020 石头工作室</view>
+      </view>
+    </view>
+  </view>
+</block>
+
+<view class="tab-bar">
+  <view class="tab-bar-border"></view>
+  <view bindtap="tabbartrue" class="tab-bar-item" data-index="0" data-path="/index/index">
+    <mp-icon type="field" icon="pencil" color="{{tabbarindex?'LightBLue':'black'}}" size="{{25}}"></mp-icon>
+    <view style="font-weight:600;font-size: 10px;color: {{tabbarindex?'LightBLue':'black'}}">体温填报</view>
+  </view>
+  <view bindtap="tabbarfalse" class="tab-bar-item" data-index="1" data-path="/index/index2">
+    <mp-icon type="field" icon="contacts" color="{{tabbarindex?'black':'LightBLue'}}" size="{{25}}"></mp-icon>
+    <view style="font-weight:600;font-size: 10px;color: {{tabbarindex?'black':'LightBLue'}}">个人信息</view>
+  </view>
+</view>

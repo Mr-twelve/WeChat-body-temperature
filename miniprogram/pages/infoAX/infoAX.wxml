@@ -1,0 +1,89 @@
+<wxs module="toxueyuan" src="../../util/xueyuan.wxs" />
+<scroll-view class="container">
+  <view class="scrolltxt">
+    <view class="marquee_box">
+      <view class="marquee_text" style="transform: translateX(-{{marqueeDistance}}px)">
+        <text>{{text}}</text>
+        <text style="margin-right:{{marquee_margin}}px;"></text>
+        <text style="margin-right:{{marquee_margin}}px;">{{text}}</text>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-panel">
+      <view style="font-weight:550;text-align:center;font-family:SimHei">{{time1}}月{{time2}}号{{toxueyuan.toname(xueyuan)}}{{nianji}}级今日异常人数{{todaypeople}}人</view>
+      <view style="font-weight:550;text-align:center;font-family:SimHei">
+        今日已填报人数：上午{{tapeople}}人，下午{{tbpeople}}人
+      </view>
+    </view>
+    <view class="weui-panel">
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+          <view class="weui-cell__bd" style="font-weight:700">上午各班级未报统计</view>
+          <view wx:if="{{!ifmathbanjitotal}}" bindtap="showifmathbanjitotal" class="weui-cell__ft" style="font-size:13px;font-weight:700">展开</view>
+          <view wx:else bindtap="hideifmathbanjitotal" class="weui-cell__ft" style="font-size:13px;font-weight:700">隐藏</view>
+        </view>
+        <block wx:if="{{ifmathbanjitotal}}" wx:for="{{mathbanjitotal}}" wx:key="banji">
+          <view class="weui-cell" style="background:LightBlue;margin:0rpx 25rpx 30rpx 25rpx;border-radius:10px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)">
+            <view class="weui-cell__bd" style="font-family:SimHei;font-size:32rpx;">
+              <view>{{item._id}}</view>
+            </view>
+            <view class="weui-cell__ft" style="color:red;font-weight:550">{{item.num}}人</view>
+          </view>
+        </block>
+        <block wx:if="{{ifmathbanjitotal&&mathbanjitotal.length==0}}" wx:key="banji">
+          <view class="weui-cell" style="background:LightBlue;margin:0rpx 25rpx 30rpx 25rpx;border-radius:10px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)">
+            <view class="weui-cell__bd" style="font-family:SimHei;font-size:32rpx;">
+              <view>各班级均无未报同学</view>
+            </view>
+          </view>
+        </block>
+      </view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+          <view class="weui-cell__bd" style="font-weight:700">下午各班级未报统计</view>
+          <view wx:if="{{!ifmathbanjitotalb}}" bindtap="showifmathbanjitotalb" class="weui-cell__ft" style="font-size:13px;font-weight:700">展开</view>
+          <view wx:else bindtap="hideifmathbanjitotalb" class="weui-cell__ft" style="font-size:13px;font-weight:700">隐藏</view>
+        </view>
+        <block wx:if="{{ifmathbanjitotalb}}" wx:for="{{mathbanjitotalb}}" wx:key="banjib">
+          <view class="weui-cell" style="background:LightBlue;margin:0rpx 25rpx 30rpx 25rpx;border-radius:10px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)">
+            <view class="weui-cell__bd" style="font-family:SimHei;font-size:32rpx;">
+              <view>{{item._id}}</view>
+            </view>
+            <view class="weui-cell__ft" style="color:red;font-weight:550">{{item.num}}人</view>
+          </view>
+        </block>
+        <block wx:if="{{ifmathbanjitotalb&&mathbanjitotalb.length==0}}" wx:key="banji">
+          <view class="weui-cell" style="background:LightBlue;margin:0rpx 25rpx 30rpx 25rpx;border-radius:10px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)">
+            <view class="weui-cell__bd" style="font-family:SimHei;font-size:32rpx;">
+              <view>各班级均无未报同学</view>
+            </view>
+          </view>
+        </block>
+      </view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+          <view class="weui-cell__bd" style="font-weight:700">学生健康状况统计</view>
+          <view bindtap="getget" class="weui-cell__ft" style="font-size:13px;font-weight:700">获取表单下载</view>
+        </view>
+        <view bindtap="fuzhi" wx:if="{{fileUrl}}" class="weui-cell" style="font-size:13px;font-weight:700;color:blue">{{fileUrl}}</view>
+      </view>
+      <view id="{{date}}" bindtap="golook" class="weui-cell" style="background:LightBlue;margin:0rpx 25rpx 30rpx 25rpx;border-radius:10px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)">
+        <view class="weui-cell__bd" style="font-family:SimHei;font-size:32rpx;">
+          <view>{{time1}}月{{time2}}日统计结果</view>
+        </view>
+        <view class="weui-cell__ft" style="color:red;font-weight:550">{{todaypeople}}人</view>
+      </view>
+      <block wx:for="{{lsjl}}">
+        <view id="{{item.day2}}" bindtap="golook" class="weui-cell" style="background:LightBlue;margin:0rpx 25rpx 30rpx 25rpx;border-radius:10px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)">
+          <view class="weui-cell__bd" style="font-family:SimHei;font-size:32rpx;">
+            <view>{{item.day}}统计结果</view>
+          </view>
+          <view class="weui-cell__ft" style="color:red;font-weight:550">{{item.people}}人</view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>

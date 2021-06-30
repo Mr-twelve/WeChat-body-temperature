@@ -1,0 +1,37 @@
+<view class="page">
+    
+    <view class="page__bd">
+        <view class="weui-article">
+            <view class="weui-article__h1" style="text-align:center;">声明</view>
+            <view class="weui-article__section">
+                <view class="weui-article__h2" style="text-align:center;">操作声明及隐私声明</view>
+                <view class="weui-article__section">
+                    <view class="weui-article__h3">1.账号登陆</view>
+                    <view class="weui-article__p">
+                        账号登录是为了便于将统计信息与用户相对应，更好的识别用户的身份。
+                    </view>
+                </view>
+                <view class="weui-article__section">
+                    <view class="weui-article__h3">2.服务功能</view>
+                    <view class="weui-article__p">
+                        该程序是为了统计学生的体温信息，便于对学生体温状况进行及时的了解和关注。
+                    </view>
+                </view>
+                <view class="weui-article__section">
+                    <view class="weui-article__h3">3.数据保护</view>
+                    <view class="weui-article__p">
+                        用户登录以后产生的所有信息将不会告知第三方并公开展示。
+我们将保护用户登录以后产生的所有操作以及数据，数据将仅用于了解学生健康状况。
+我们将严格保护用户的隐私与数据。
+                    </view>
+                </view>
+                <view class="weui-article__section">
+                    <view class="weui-article__h3">4.隐私保护</view>
+                    <view class="weui-article__p">
+                        我们将严格保护用户隐私，使用过程中将向用户告知使用数据的用途与方式。
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,48 @@
+<!--miniprogram/pages/first/first.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class="ppp">
+    <view style="background:LightBLue;margin:-60rpx 25rpx 25rpx 25rpx;border-radius:5px;box-shadow:0px 6px 5px rgba(0,0,0,0.5)">
+      <view class="weui-form__control-area" style="padding-top:0rpx;margin:50px 20px">
+        <view class="weui-cells__group weui-cells__group_form">
+
+          <view class="weui-cells__title" style="color:black;font-size:32rpx;background:white;padding-top:30rpx;margin-bottom:0rpx;font-weight:bolder;border-top-left-radius:20rpx;border-top-right-radius:20rpx">家庭住址</view>
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell ">
+              <view class="weui-cell__bd">
+                <input class="weui-input" name="location" placeholder="请输入家庭住址" type="text" />
+              </view>
+            </view>
+          </view>
+
+          <view class="weui-cells__title" style="color:black;font-size:32rpx;background:white;padding-top:30rpx;margin-bottom:0rpx;font-weight:bolder;">家庭成员健康情况</view>
+          <view class="weui-cells weui-cells_after-title" >
+            <view class="weui-cell ">
+              <view class="weui-cell__bd">
+                <input class="weui-input" name="family" placeholder="请输入家庭成员健康情况" type="text" />
+              </view>
+            </view>
+          </view>
+          <view class="weui-cells__title" style="color:black;font-size:32rpx;background:white;padding-top:30rpx;margin-bottom:0rpx;font-weight:bolder;">是否返校，如果是请详细说明所乘交通工具信息</view>
+          <view class="weui-cells weui-cells_after-title" >
+            <view class="weui-cell ">
+              <view class="weui-cell__bd">
+                <textarea name="goschool" class="weui-textarea" placeholder="请输入文本" style="height: 3.3em" />
+              </view>
+            </view>
+          </view>
+
+          <view class="weui-cells__title" style="color:black;font-size:32rpx;background:white;padding-top:30rpx;margin-bottom:0rpx;font-weight:bolder;">是否前往疫区，如果是请详细说明所乘交通工具</view>
+          <view style="border-bottom-left-radius:20rpx;border-bottom-right-radius:20rpx" class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+              <view class="weui-cell__bd">
+                <textarea name="gowuhan" class="weui-textarea" placeholder="请输入文本" style="height: 3.3em" />
+              </view>
+            </view>
+          </view>
+
+        </view>
+        <button style="margin-top:40rpx;background-color:white;" formType="submit">提交</button>
+      </view>
+    </view>
+  </view>
+</form>

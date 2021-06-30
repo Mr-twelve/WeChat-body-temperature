@@ -1,0 +1,111 @@
+<view style="margin-top: 20rpx;" class='baseInfo'>
+	<view>返校申请卡
+		<text wx:if="{{have}}" style="color:green">已提交</text>
+		<text wx:if="{{!have}}" style="color:red">未提交</text>
+	</view>
+</view>
+
+<view wx:if="{{textyesno}}" class='baseInfo'>
+	<view>{{text}}</view>
+	</view>
+
+	<form bindsubmit="formSubmit">
+
+		<view class='name'>
+			<view style="border-left: 10rpx solid LightBLue;">现居住地址:</view>
+			<input name="location" type='text' placeholder-style='font-size:28rpx;' placeholder="{{location?location:'请在此输入文本内容'}}" value="{{location?location:''}}"></input>
+		</view>
+		<view class='name'>
+			<view style="border-left: 10rpx solid LightBLue;">本人身体健康情况:</view>
+			<input name="myhealth" type='text' placeholder-style='font-size:28rpx;' placeholder="{{myhealth?myhealth:'请在此输入文本内容'}}" value="{{myhealth?myhealth:''}}"></input>
+		</view>
+		<view class='name'>
+			<view style="border-left: 10rpx solid LightBLue;">同住家庭人员健康状况（与新冠肺炎相关的）:</view>
+			<textarea style="width: 100%;height: 100px;" name="familyhealth" type='text' placeholder-style='font-size:28rpx;' placeholder="{{familyhealth?familyhealth:'请在此输入文本内容'}}" value="{{familyhealth?familyhealth:''}}"></textarea>
+		</view>
+		<view class='name'>
+			<view style="border-left: 10rpx solid LightBLue;">近期出行情况:</view>
+			<textarea style="width: 100%;height: 100px;" name="jinqigoout" type='text' placeholder-style='font-size:28rpx;' placeholder="{{jinqigoout?jinqigoout:'请在此输入文本内容'}}" value="{{jinqigoout?jinqigoout:''}}"></textarea>
+		</view>
+		<!-- <view class='name'>
+			<view style="border-left: 10rpx solid LightBLue;">拟何时、以何种方式从现居住地返校（详细说明返校路径及所乘交通工具、车次、中转等）:</view>
+			<textarea style="width: 100%;height: 100px;" name="goschool" type='text' placeholder-style='font-size:28rpx;' placeholder="{{goschool?goschool:'请在此输入文本内容'}}" value="{{goschool?goschool:''}}"></textarea>
+		</view> -->
+		<!-- ------------ -->
+		<view class='name'>
+			<view style="border-left: 10rpx solid LightBLue;">返校方式(多选)</view>
+			<checkbox-group bindchange="checkboxChange">
+				<label class="checkbox">
+					<checkbox value="自驾" checked="{{checkbox_zj}}" />自驾
+				</label>
+				<label class="checkbox">
+					<checkbox value="汽车" checked="{{checkbox_qc}}"/>汽车
+				</label>
+				<label class="checkbox">
+					<checkbox value="火车" checked="{{checkbox_hc}}"/>火车
+				</label>
+				<label class="checkbox">
+					<checkbox value="飞机" checked="{{checkbox_fj}}"/>飞机
+				</label>
+			</checkbox-group>
+		</view>
+		<view class='name'>
+			<view style="border-left: 10rpx solid LightBLue;">返校路径</view>
+			<view style="border-left: 10rpx solid LightBLue;">出发站</view>
+			<input name="shifazhan" type='text' placeholder-style='font-size:28rpx;' placeholder="{{shifazhan?shifazhan:'请在此输入文本内容'}}" value="{{shifazhan?shifazhan:''}}"></input>
+			<view style="border-left: 10rpx solid LightBLue;">中转站</view>
+			<input name="zhongzhuanzhan" type='text' placeholder-style='font-size:28rpx;' placeholder="{{zhongzhuanzhan?zhongzhuanzhan:'请在此输入文本内容'}}" value="{{zhongzhuanzhan?zhongzhuanzhan:''}}"></input>
+			<view style="border-left: 10rpx solid LightBLue;">终点站</view>
+			<input name="zhongdianzhan" type='text' placeholder-style='font-size:28rpx;' placeholder="{{zhongdianzhan?zhongdianzhan:'请在此输入文本内容'}}" value="{{zhongdianzhan?zhongdianzhan:''}}"></input>
+		</view>
+		<view class='name'>
+			<view style="border-left: 10rpx solid LightBLue;">返校最后一程车次</view>
+			<input name="zuihoucheci" type='text' placeholder-style='font-size:28rpx;' placeholder="{{zuihoucheci?zuihoucheci:'请在此输入文本内容'}}" value="{{zuihoucheci?zuihoucheci:''}}"></input>
+		</view>
+		<view class='name'>
+			<view style="border-left: 10rpx solid LightBLue;">到达太谷时间</view>
+			<picker mode="date" value="{{daodataiguday}}" start="2020-05-03" end="2020-09-01" bindchange="bindDateChange">
+				<view class="picker" style="color:blue">
+					{{daodataiguday}}
+				</view>
+			</picker>
+			<picker mode="time" value="{{daodataigutime}}" start="00:00" end="24:00" bindchange="bindTimeChange">
+    <view class="picker" style="color:blue">
+       {{daodataigutime}}
+    </view>
+  </picker>
+		</view>
+		<view class='name'>
+			<view style="border-left: 10rpx solid LightBLue;">到达地点(单选)</view>
+			<radio-group bindchange="radioChange">
+				<label class="radio">
+					<radio value="太谷火车站" checked="{{daodadidian=='太谷火车站'}}"/>太谷火车站
+				</label>
+				<label class="radio">
+					<radio value="太谷动车站" checked="{{daodadidian=='太谷动车站'}}"/>太谷动车站
+				</label>
+				<label class="radio">
+					<radio value="太谷汽车站" checked="{{daodadidian=='太谷汽车站'}}"/>太谷汽车站
+				</label>
+				<label class="radio">
+					<radio value="校门口" checked="{{daodadidian=='校门口'}}" />校门口
+				</label>
+			</radio-group>
+		</view>
+		<!-- ------------ -->
+		<!-- <view class='name'>
+			<view style="border-left: 10rpx solid LightBLue;">返校当天抵达的终点站(如：太原南站):</view>
+			<textarea style="width: 100%;height: 100px;" name="daytozdz" type='text' placeholder-style='font-size:28rpx;' placeholder="{{daytozdz?daytozdz:'请在此输入文本内容'}}" value="{{daytozdz?daytozdz:''}}"></textarea>
+		</view>
+		<view class='name'>
+			<view style="border-left: 10rpx solid LightBLue;">返校当天抵达终点站的具体时间(如：13:25):</view>
+			<textarea style="width: 100%;height: 100px;" name="daytozdztime" type='text' placeholder-style='font-size:28rpx;' placeholder="{{daytozdztime?daytozdztime:'请在此输入文本内容'}}" value="{{daytozdztime?daytozdztime:''}}"></textarea>
+		</view> -->
+		<block wx:if="{{yesno}}">
+			<button wx:if="{{!have}}" form-type='submit'>提交</button>
+			<button wx:else form-type='submit'>更改</button>
+		</block>
+		<block wx:if="{{!yesno}}">
+			<button>提交已关闭</button>
+		</block>
+	</form>
